@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signUp } from "../store/auth/action";
+import MainLobby from "./MainLobby";
 
 class SignUpPage extends React.Component {
   state = {
@@ -28,7 +29,7 @@ class SignUpPage extends React.Component {
       <div>
         {this.state.signedup ? (
           <div>
-            <h1>You have succesfully signed up!</h1>
+            <MainLobby />
           </div>
         ) : (
           <div>

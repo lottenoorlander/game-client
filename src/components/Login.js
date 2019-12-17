@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../store/auth/action";
 import { Link } from "react-router-dom";
+import MainLobby from "./GameLobby";
 
 class LoginPage extends React.Component {
   state = {
@@ -11,8 +12,8 @@ class LoginPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const action = login(this.state.userName, this.state.password); // series of actions
-    this.props.dispatch(action); // little bit of magic. Thanks Dan Abramov
+    const action = login(this.state.userName, this.state.password);
+    this.props.dispatch(action);
   };
 
   handleChange = event => {
@@ -26,8 +27,7 @@ class LoginPage extends React.Component {
       <div>
         {this.props.loggedin ? (
           <div>
-            <h1>You have succesfully logged in!</h1>
-            <Link to="/account/">Account Page</Link>
+            <MainLobby />
           </div>
         ) : (
           <div>
