@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import logo from "./logo.svg";
 import { Switch, Route } from "react-router-dom";
-import superagent from "superagent";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import MainLobby from "./components/MainLobby";
@@ -24,13 +22,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route path="/signup" component={Signup} />
-          <Route exact path="/" component={Login} />
-          <Route path="/lobby" component={MainLobby} />
-          <Route path="/game/:id" component={GameLobby} />
-        </Switch>
-        <Login />
+        <Route path="/signup" component={Signup} />
+        <Route exact path="/" component={Login} />
+        <Route path="/lobby" component={MainLobby} />
+        <Route path="/game/:id" component={GameLobby} />
       </div>
     );
   }

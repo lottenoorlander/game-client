@@ -20,6 +20,7 @@ class MainLobby extends Component {
       console.warn(("error test:", error));
     }
     this.setState({ text: "" });
+    // TODO Auto move to newly created room
   };
 
   onChange = event => {
@@ -33,7 +34,8 @@ class MainLobby extends Component {
   render() {
     return (
       <div>
-        List of rooms
+        <h1>List of rooms</h1>
+        <p>create a new room:</p>
         <form onSubmit={this.onSubmit}>
           <input type="text" onChange={this.onChange} value={this.state.text} />
           <button>Submit</button>
