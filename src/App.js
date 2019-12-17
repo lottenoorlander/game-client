@@ -1,20 +1,68 @@
-import React from "react";
+import React, { Component } from "react";
 import logo from "./logo.svg";
 import { Switch, Route } from "react-router-dom";
+import superagent from "superagent";
 import Signup from "./components/SignUp";
-import "./App.css";
-// import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import MainLobby from "./components/MainLobby";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <Switch>
-        <Route path="/signup" component={Signup} />
+class App extends Component {
+  state = {
+    text: ""
+  };
+
+  url = "http://localhost:4000";
+  stream = new EventSource(`${this.url}/stream`);
+
+  componentDidMount() {
+    this.stream.onmessage = event => {
+      const { data } = event;
+      const action = JSON.parse(data);
+      console.log(action);
+    };
+  }
+
+  onSubmit = async event => {
+    event.preventDefault();
+    try {
+      const response = await superagent
+        .post(`${this.url}/gameroom`)
+        .send({ name: this.state.text });
+    } catch (error) {
+      console.warn(("error test:", error));
+    }
+    this.setState({ text: "" });
+  };
+
+  onChange = event => {
+    const {
+      target: { value }
+    } = event;
+
+    this.setState({ text: value });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Switch>
+          <form onSubmit={this.onSubmit}>
+            <input
+              type="text"
+              onChange={this.onChange}
+              value={this.state.text}
+            />
+            <button>Submit</button>
+          </form>
+          <Route path="/signup" component={Signup} />
+          {/* <Route exact path="/" component={Login} />
+          <Route path="/lobby" component={MainLobby} /> */}
+        </Switch>
         <Login />
-      </Switch>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
