@@ -1,9 +1,21 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class MainLobby extends Component {
   render() {
-    return <div>GameListItem with links to individual gamelobbies</div>;
+    return (
+      <div>
+        List of rooms
+        {this.props.gamerooms.map(room => console.log(room.name))}
+      </div>
+    );
   }
 }
 
-export default MainLobby;
+function mapStateToProps(reduxState) {
+  return {
+    gamerooms: reduxState.gamerooms
+  };
+}
+
+export default connect(mapStateToProps)(MainLobby);

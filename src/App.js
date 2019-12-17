@@ -57,8 +57,8 @@ class App extends Component {
             <button>Submit</button>
           </form>
           <Route path="/signup" component={Signup} />
-          {/* <Route exact path="/" component={Login} />
-          <Route path="/lobby" component={MainLobby} /> */}
+          <Route exact path="/" component={Login} />
+          <Route path="/lobby" component={MainLobby} />
         </Switch>
         <Login />
       </div>

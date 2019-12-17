@@ -69,7 +69,7 @@ class LoginPage extends React.Component {
 }
 function mapStateToProps(reduxState) {
   return {
-    loggedin: Boolean(reduxState.auth.profile)
+    loggedin: Boolean(reduxState.auth.jwt)
   };
 }
 
