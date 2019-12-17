@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import logo from "./logo.svg";
 import { Switch, Route } from "react-router-dom";
 import superagent from "superagent";
@@ -12,14 +13,14 @@ class App extends Component {
     text: ""
   };
 
-  url = "http://localhost:4000";
+  url = "https://shielded-cove-79557.herokuapp.com";
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
     this.stream.onmessage = event => {
       const { data } = event;
       const action = JSON.parse(data);
-      console.log(action);
+      this.props.dispatch(action);
     };
   }
 
@@ -65,4 +66,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
