@@ -7,7 +7,7 @@ class PlayerList extends Component {
     return (
       <div className="player-list">
         <div>
-          <h2>Players</h2>
+          <h2>Players in game</h2>
           {this.props.gamerooms.map(room => {
                 return room.users.map(player => {
                     return (
