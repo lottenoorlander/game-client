@@ -12,6 +12,7 @@ class GameRoom extends Component {
   render() {
     return (
         <div className="player-list">
+          <h1>Welcome to the gameroom</h1>
             <PlayerList/>
             <GameRules/>
             <ReadyButton/>
