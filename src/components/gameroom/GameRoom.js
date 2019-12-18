@@ -15,6 +15,12 @@ class GameRoom extends Component {
 
 export default GameRoom;
 
-// Ready button = if all ready, start game
+// Ready button = if all ready, start game (server-side check)
 // Start button = only showing for the room creator
-// 
+
+// On Ready-button push (post user readyToStart: true for
+// this user ID)
+
+// PlayerList - player info of all players in the current room
+
+// GameRules - Overview of the game rules

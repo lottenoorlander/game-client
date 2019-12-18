@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-class ReadyButton extends Component {
+class GameRules extends Component {
   render() {
     return (
-        <div>   
+        <div>
         </div>
     )
   }
 }
 
-export default ReadyButton;
+export default GameRules;
