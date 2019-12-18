@@ -34,12 +34,14 @@ class MainLobby extends Component {
   };
 
   joinGameroom = async gameroomId => {
-    console.log("gameroomId test:", gameroomId);
+    console.log("jwt test:", this.props.auth.jwt);
     try {
-      const response = await superagent.put(`${this.url}/join`).send({
-        gameroomId,
-        userId: 1
-      });
+      const response = await superagent
+        .put(`${this.url}/join`)
+        .set("Authorization", `Bearer ${this.props.auth.jwt}`)
+        .send({
+          gameroomId
+        });
 
       console.log("response test:", response);
     } catch (error) {
@@ -59,7 +61,9 @@ class MainLobby extends Component {
         {this.props.gamerooms.map(room => {
           return (
             <Link key={room.id} to={`/game/${room.id}`}>
-              <h2>{room.name} </h2>
+              <h2>
+                {room.name} - {this.props.gamerooms[room.id - 1].users.length}/2
+              </h2>
               <button onClick={() => this.joinGameroom(room.id)}>Join</button>
             </Link>
           );
@@ -71,7 +75,8 @@ class MainLobby extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    gamerooms: reduxState.gamerooms
+    gamerooms: reduxState.gamerooms,
+    auth: reduxState.auth
   };
 }
 
