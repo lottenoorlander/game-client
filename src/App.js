@@ -9,6 +9,7 @@ import "./App.css";
 
 class App extends Component {
   url = "https://shielded-cove-79557.herokuapp.com";
+  // url = "https://localhost:4000";
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
