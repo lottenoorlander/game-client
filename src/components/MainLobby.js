@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import superagent from "superagent";
+import { getNodeText } from "@testing-library/react";
 
 class MainLobby extends Component {
   state = {
@@ -9,6 +10,7 @@ class MainLobby extends Component {
   };
 
   url = "https://shielded-cove-79557.herokuapp.com";
+  // url = "https://localhost:4000";
 
   onSubmit = async event => {
     event.preventDefault();
@@ -31,6 +33,22 @@ class MainLobby extends Component {
     this.setState({ text: value });
   };
 
+  joinGameroom = async gameroomId => {
+    console.log("jwt test:", this.props.auth.jwt);
+    try {
+      const response = await superagent
+        .put(`${this.url}/join`)
+        .set("Authorization", `Bearer ${this.props.auth.jwt}`)
+        .send({
+          gameroomId
+        });
+
+      console.log("response test:", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     return (
       <div>
@@ -42,14 +60,11 @@ class MainLobby extends Component {
         </form>
         {this.props.gamerooms.map(room => {
           return (
-            <Link
-              key={room.id}
-              to={`/game/${room.id}`}
-              // onClick={
-              //   /*TODO DISPATCH message to backend that player is linked to this room */
-              // }
-            >
-              <h2>{room.name} </h2>
+            <Link key={room.id} to={`/game/${room.id}`}>
+              <h2>
+                {room.name} - {this.props.gamerooms[room.id - 1].users.length}/2
+              </h2>
+              <button onClick={() => this.joinGameroom(room.id)}>Join</button>
             </Link>
           );
         })}
@@ -60,7 +75,8 @@ class MainLobby extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    gamerooms: reduxState.gamerooms
+    gamerooms: reduxState.gamerooms,
+    auth: reduxState.auth
   };
 }
 
