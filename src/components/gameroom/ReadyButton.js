@@ -9,9 +9,9 @@ class ReadyButton extends Component {
 
   handleClick = () => {
       if(this.state.readyToStart === false) {
-        this.setState({readyToStart: true})
+          this.setState({readyToStart: true})
       } else {
-        this.setState({readyToStart: false})
+          this.setState({readyToStart: false})
     }
   };
 
