@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import "./ReadyButton.css";
 
 class ReadyButton extends Component {
   state = {
-    userID: null,
+    userID: null,  // need to use the current users ID
     readyToStart: false,
   }
 
@@ -17,9 +18,11 @@ class ReadyButton extends Component {
   render() {
     return (
           <div>
-            <button onClick={this.handleClick}>
+            <button 
+              className="ready-button"
+              onClick={this.handleClick}>
               {this.state.readyToStart ? (
-                "CLICK TO DELAY START"
+                "CLICK TO DELAY"
               ) : (
                 "CLICK WHEN READY"
               )}
