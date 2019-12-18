@@ -5,6 +5,7 @@ import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import MainLobby from "./components/MainLobby";
 import GameLobby from "./components/GameLobby";
+import GameRoom from "./components/gameroom/GameRoom"
 import "./App.css";
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
         <Route exact path="/" component={Login} />
         <Route path="/lobby" component={MainLobby} />
         <Route path="/game/:id" component={GameLobby} />
+        <Route path="/gameroom/test" component={GameRoom}/>
       </div>
     );
   }
