@@ -4,6 +4,9 @@
     color: white;
     padding: 15px 32px;
     margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     text-decoration: none;
     display: inline-block;

@@ -7,13 +7,33 @@ import GameRules from "./GameRules"
 
 class GameRoom extends Component {
   state = {
-    allPlayersReady: false,
   }
+
+  componentDidMount () {
+    
+  }
+
   render() {
+    const { gamerooms } = this.props
+    console.log('whole list:', gamerooms)
+
+    const [first] = gamerooms
+    console.log('the first game', first)
+
+    if (!first) {
+      return "Loading the game..."
+    }
+
+    const { name } = first
+    console.log('name test:', this.props.gamerooms[0].name)
     return (
         <div className="player-list">
-          <h1>Welcome to the gameroom</h1>
-            <PlayerList/>
+     
+          <h1>{`Welcome to ${this.props.gamerooms[this.props.match.params.id-1].name}`}</h1>
+            <PlayerList
+            currentRoomId={this.props.match.params.id}
+            currentRoom={this.props.gamerooms[this.props.match.params.id-1]}
+            />
             <GameRules/>
             <ReadyButton/>
         </div>
@@ -32,7 +52,7 @@ export default connect(mapStateToProps)(GameRoom);
 // Start button = only showing for the room creator
 
 // On Ready-button push (post user readyToStart: true for
-// this user ID)
+// this user ID) - needs action (reducer isn't really needed is it?)
 
 // PlayerList - player info of all players in the current room
 

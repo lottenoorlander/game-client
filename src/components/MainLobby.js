@@ -34,7 +34,7 @@ class MainLobby extends Component {
   };
 
   joinGameroom = async gameroomId => {
-    console.log("jwt test:", this.props.auth.jwt);
+    // console.log("jwt test:", this.props.auth.jwt);
     try {
       const response = await superagent
         .put(`${this.url}/join`)
@@ -43,7 +43,7 @@ class MainLobby extends Component {
           gameroomId
         });
 
-      console.log("response test:", response);
+      // console.log("response test:", response);
     } catch (error) {
       console.log(error);
     }
