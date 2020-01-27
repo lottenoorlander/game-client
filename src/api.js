@@ -1,9 +1,9 @@
-// url = "https://shielded-cove-79557.herokuapp.com";
-// url = "http://localhost:4000"
+// const url = "https://shielded-cove-79557.herokuapp.com";
+const url = "http://localhost:4000";
 
 export default function api(endpoint, { method = "GET", body, jwt } = {}) {
   console.log("its fetching");
-  return fetch("https://shielded-cove-79557.herokuapp.com" + endpoint, {
+  return fetch(url + endpoint, {
     method: method,
     headers: {
       Authorization: `Bearer ${jwt}`,

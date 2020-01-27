@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import superagent from "superagent";
-import { getNodeText } from "@testing-library/react";
 
 class MainLobby extends Component {
   state = {
     text: ""
   };
 
-  url = "https://shielded-cove-79557.herokuapp.com";
-  // url = "https://localhost:4000";
+  // url = "https://shielded-cove-79557.herokuapp.com";
+  url = "http://localhost:4000";
 
   onSubmit = async event => {
     event.preventDefault();
