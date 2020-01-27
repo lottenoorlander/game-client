@@ -2,8 +2,16 @@ import React, { Component } from "react";
 
 class GameBoard extends Component {
   render() {
+    const gameboard = [
+      [t, t, t],
+      [t, t, t],
+      [p, t, p],
+      [t, t, t],
+      [t, t, t],
+      [t, p, t],
+      [t, f, t]
+    ];
     return (
-      // 16 rows in the render, each a division
       <div className="board-wrapper">
         {console.log(this.props.currentRoom)}
         THIS IS THE GAMEBOARD <br />- each player needs to be assigned a robot{" "}
