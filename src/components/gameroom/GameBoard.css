@@ -1,0 +1,12 @@
+.board-wrapper {
+  display: flex;
+  width: 30vw;
+  height: 70vw;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.board-tile {
+  width: 30%;
+}
