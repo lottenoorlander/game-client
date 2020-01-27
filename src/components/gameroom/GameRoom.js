@@ -43,6 +43,7 @@ class GameRoom extends Component {
             currentRoomId={this.props.match.params.id}
             currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
           />
+          //ready button, cards display, which needs ability to select
         )}
       </div>
     );
