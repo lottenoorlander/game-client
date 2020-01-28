@@ -4,7 +4,6 @@
   height: 70vh;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0 auto;
 }
 
 .board-tile {

@@ -5,6 +5,7 @@ import ReadyButton from "./ReadyButton";
 import GameRules from "./GameRules";
 import GameBoard from "./GameBoard";
 import Cards from "./Cards";
+import PlayerScore from "./PlayerScore";
 
 class GameRoom extends Component {
   state = {};
@@ -40,14 +41,30 @@ class GameRoom extends Component {
             <ReadyButton />
           </div>
         ) : (
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center"
+            }}
+          >
             <GameBoard
               currentRoomId={this.props.match.params.id}
               currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
             />
-            <Cards
-              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
-            />
+            <div>
+              <GameRules />
+              <PlayerScore
+                currentRoom={
+                  this.props.gamerooms[this.props.match.params.id - 1]
+                }
+              />
+              <Cards
+                currentRoom={
+                  this.props.gamerooms[this.props.match.params.id - 1]
+                }
+              />
+            </div>
           </div>
         )}
       </div>

@@ -96,8 +96,8 @@ class Cards extends Component {
     [fourAhead860, [860, "fourAhead"]]
   ];
 
-  number1 = Math.floor(Math.random() * 33);
-  number2 = Math.floor(Math.random() * 33);
+  number1 = Math.floor(Math.random() * this.cards.length);
+  number2 = Math.floor(Math.random() * this.cards.length);
 
   render() {
     return (
