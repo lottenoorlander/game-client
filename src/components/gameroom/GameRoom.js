@@ -4,6 +4,7 @@ import PlayerList from "./PlayerList";
 import ReadyButton from "./ReadyButton";
 import GameRules from "./GameRules";
 import GameBoard from "./GameBoard";
+import Cards from "./Cards";
 
 class GameRoom extends Component {
   state = {};
@@ -39,11 +40,15 @@ class GameRoom extends Component {
             <ReadyButton />
           </div>
         ) : (
-          <GameBoard
-            currentRoomId={this.props.match.params.id}
-            currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
-          />
-          //ready button, cards display, which needs ability to select
+          <div>
+            <GameBoard
+              currentRoomId={this.props.match.params.id}
+              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
+            />
+            <Cards
+              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
+            />
+          </div>
         )}
       </div>
     );
