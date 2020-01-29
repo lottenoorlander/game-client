@@ -129,7 +129,7 @@ class Cards extends Component {
             </div>
           </div>
         ) : (
-          "Executing turn!"
+          ""
         )}
       </div>
     );
