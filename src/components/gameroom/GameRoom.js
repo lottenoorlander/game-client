@@ -14,31 +14,29 @@ class GameRoom extends Component {
 
   render() {
     const { gamerooms } = this.props;
-    console.log("whole list:", gamerooms);
-
     const [first] = gamerooms;
-    console.log("the first game", first);
 
     if (!first) {
       return "Loading the game...";
     }
+    const filterForGameroom = gamerooms.filter(gameroom => {
+      return gameroom.id === parseInt(this.props.match.params.id);
+    });
+    const currentGameroom = filterForGameroom[0];
 
-    const { name } = first;
-    console.log("name test:", this.props.gamerooms[0].name);
     return (
       <div className="player-list">
-        <h1>{`Welcome to ${
-          this.props.gamerooms[this.props.match.params.id - 1].name
-        }`}</h1>
-        {this.props.gamerooms[this.props.match.params.id - 1].phase ===
-        "WAITING_TO_START" ? (
-          <div>
-            <PlayerList
-              currentRoomId={this.props.match.params.id}
-              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
-            />
+        <h1>{`Welcome to ${currentGameroom.name}`}</h1>
+        {currentGameroom.phase === "WAITING_TO_START" ? (
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div>
+              <PlayerList
+                currentRoomId={this.props.match.params.id}
+                currentRoom={currentGameroom}
+              />
+              <ReadyButton />
+            </div>
             <GameRules />
-            <ReadyButton />
           </div>
         ) : (
           <div
@@ -51,14 +49,10 @@ class GameRoom extends Component {
             <GameRules />
             <GameBoard
               currentRoomId={this.props.match.params.id}
-              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
+              currentRoom={currentGameroom}
             />
             <div>
-              <PlayerScore
-                currentRoom={
-                  this.props.gamerooms[this.props.match.params.id - 1]
-                }
-              />
+              <PlayerScore currentRoom={currentGameroom} />
               <Cards
                 currentRoom={
                   this.props.gamerooms[this.props.match.params.id - 1]
@@ -79,12 +73,3 @@ function mapStateToProps(reduxState) {
 }
 
 export default connect(mapStateToProps)(GameRoom);
-// Ready button = if all ready, start game (server-side check)
-// Start button = only showing for the room creator
-
-// On Ready-button push (post user readyToStart: true for
-// this user ID) - needs action (reducer isn't really needed is it?)
-
-// PlayerList - player info of all players in the current room
-
-// GameRules - Overview of the game rules

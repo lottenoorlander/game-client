@@ -33,6 +33,7 @@ class MainLobby extends Component {
   };
 
   joinGameroom = async gameroomId => {
+    console.log(gameroomId);
     try {
       const response = await superagent
         .put(`${this.url}/join`)
@@ -54,13 +55,14 @@ class MainLobby extends Component {
           <input type="text" onChange={this.onChange} value={this.state.text} />
           <button>Submit</button>
         </form>
+        {/* I clicked to join gameroom1 --> ended up on the page for new gameroom (but the link is right)  // joined gameroom 1 succesfully // if I follow link and don't click join it'll take me to the wrong room*/}
         {this.props.gamerooms.map(room => {
           return (
             <Link key={room.id} to={`/game/${room.id}`}>
               <h2>
-                {room.name} - {this.props.gamerooms[room.id - 1].users.length}/2
+                {room.name} - {room.users.length}/2
               </h2>
-              {this.props.gamerooms[room.id - 1].users.length < 2 ? (
+              {room.users.length < 2 ? (
                 <button onClick={() => this.joinGameroom(room.id)}>Join</button>
               ) : (
                 ""

@@ -34,7 +34,6 @@ class GameBoard extends Component {
   render() {
     return (
       <div className="board-wrapper">
-        {console.log("updatedGameBoard", this.updatedGameBoard)}
         {this.gameboard.map(row =>
           row.map(tile => {
             if (tile === "tile") {
@@ -54,11 +53,6 @@ class GameBoard extends Component {
             }
           })
         )}
-        {/* {console.log(this.props.currentRoom)}
-        THIS IS THE GAMEBOARD <br />- each player needs to be assigned a robot{" "}
-        <br />- the board needs to be an array <br />- array needs to be updated
-        based on current position of both robots when executing move <br />-
-        board needs to be a certain size // remember to look that up */}
       </div>
     );
   }
