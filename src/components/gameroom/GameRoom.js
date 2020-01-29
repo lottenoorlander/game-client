@@ -53,11 +53,7 @@ class GameRoom extends Component {
             />
             <div>
               <PlayerScore currentRoom={currentGameroom} />
-              <Cards
-                currentRoom={
-                  this.props.gamerooms[this.props.match.params.id - 1]
-                }
-              />
+              <Cards currentRoom={currentGameroom} />
             </div>
           </div>
         )}
