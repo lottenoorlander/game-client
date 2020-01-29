@@ -104,8 +104,10 @@ class Cards extends Component {
       <div>
         {this.props.currentRoom.phase === "START_TURN" ? (
           <div>
-            <h4>Pick one:</h4>
-            <button onClick={this.onClickHandler}>Ready!</button>
+            <div>
+              <h4>Pick one and click ready when you are:</h4>
+              <button onClick={this.onClickHandler}>Ready!</button>
+            </div>
             <div style={{ display: "flex", width: "20vw", height: "25vw" }}>
               <img
                 style={{
@@ -129,8 +131,6 @@ class Cards extends Component {
         ) : (
           "Executing turn!"
         )}
-
-        {/* //ready button, cards display, which needs ability to select */}
       </div>
     );
   }

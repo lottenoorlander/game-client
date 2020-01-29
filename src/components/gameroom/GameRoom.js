@@ -48,12 +48,12 @@ class GameRoom extends Component {
               justifyContent: "center"
             }}
           >
+            <GameRules />
             <GameBoard
               currentRoomId={this.props.match.params.id}
               currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
             />
             <div>
-              <GameRules />
               <PlayerScore
                 currentRoom={
                   this.props.gamerooms[this.props.match.params.id - 1]

@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-function mapStateToProps(state) {
-  return {};
-}
-
 class PlayerScore extends Component {
   render() {
     return (
@@ -25,4 +21,4 @@ class PlayerScore extends Component {
   }
 }
 
-export default connect(mapStateToProps)(PlayerScore);
+export default PlayerScore;
