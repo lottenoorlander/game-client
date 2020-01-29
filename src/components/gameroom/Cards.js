@@ -34,6 +34,7 @@ import twoAhead670 from "../../images/Program_Cards/RR-670-2ahead.jpg";
 import twoAhead680 from "../../images/Program_Cards/RR-680-2ahead.jpg";
 import fourAhead850 from "../../images/Program_Cards/RR-850-4ahead.jpg";
 import fourAhead860 from "../../images/Program_Cards/RR-860-4ahead.jpg";
+import { url } from "../../url";
 
 class Cards extends Component {
   state = {
@@ -44,7 +45,7 @@ class Cards extends Component {
   onClickHandler = async () => {
     try {
       const response = await superagent
-        .put(`${this.url}/turn`) //whatever it was
+        .put(`${url}/turn`)
         .set("Authorization", `Bearer ${this.props.auth.jwt}`)
         .send({ turn: this.state.turn });
     } catch (error) {
@@ -137,6 +138,6 @@ class Cards extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return { auth: state.auth };
 }
 export default connect(mapStateToProps)(Cards);
