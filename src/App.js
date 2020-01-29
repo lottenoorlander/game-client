@@ -4,12 +4,12 @@ import { Switch, Route } from "react-router-dom";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import MainLobby from "./components/MainLobby";
-import GameRoom from "./components/gameroom/GameRoom"
+import GameRoom from "./components/gameroom/GameRoom";
 import "./App.css";
 
 class App extends Component {
-  url = "https://shielded-cove-79557.herokuapp.com";
-  // url = "https://localhost:4000";
+  // url = "https://shielded-cove-79557.herokuapp.com";
+  url = "http://localhost:4000";
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
@@ -27,7 +27,7 @@ class App extends Component {
         <Route exact path="/" component={Login} />
         <Route path="/lobby" component={MainLobby} />
         <Route path="/game/:id" component={GameRoom} />
-        <Route path="/gameroom/test" component={GameRoom}/>
+        <Route path="/gameroom/test" component={GameRoom} />
       </div>
     );
   }

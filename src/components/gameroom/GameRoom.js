@@ -1,43 +1,74 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import PlayerList from "./PlayerList"
-import ReadyButton from "./ReadyButton"
-import GameRules from "./GameRules"
-
+import PlayerList from "./PlayerList";
+import ReadyButton from "./ReadyButton";
+import GameRules from "./GameRules";
+import GameBoard from "./GameBoard";
+import Cards from "./Cards";
+import PlayerScore from "./PlayerScore";
 
 class GameRoom extends Component {
-  state = {
-  }
+  state = {};
 
-  componentDidMount () {
-    
-  }
+  componentDidMount() {}
 
   render() {
-    const { gamerooms } = this.props
-    console.log('whole list:', gamerooms)
+    const { gamerooms } = this.props;
+    console.log("whole list:", gamerooms);
 
-    const [first] = gamerooms
-    console.log('the first game', first)
+    const [first] = gamerooms;
+    console.log("the first game", first);
 
     if (!first) {
-      return "Loading the game..."
+      return "Loading the game...";
     }
 
-    const { name } = first
-    console.log('name test:', this.props.gamerooms[0].name)
+    const { name } = first;
+    console.log("name test:", this.props.gamerooms[0].name);
     return (
-        <div className="player-list">
-     
-          <h1>{`Welcome to ${this.props.gamerooms[this.props.match.params.id-1].name}`}</h1>
+      <div className="player-list">
+        <h1>{`Welcome to ${
+          this.props.gamerooms[this.props.match.params.id - 1].name
+        }`}</h1>
+        {this.props.gamerooms[this.props.match.params.id - 1].phase ===
+        "WAITING_TO_START" ? (
+          <div>
             <PlayerList
-            currentRoomId={this.props.match.params.id}
-            currentRoom={this.props.gamerooms[this.props.match.params.id-1]}
+              currentRoomId={this.props.match.params.id}
+              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
             />
-            <GameRules/>
-            <ReadyButton/>
-        </div>
-    )
+            <GameRules />
+            <ReadyButton />
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center"
+            }}
+          >
+            <GameRules />
+            <GameBoard
+              currentRoomId={this.props.match.params.id}
+              currentRoom={this.props.gamerooms[this.props.match.params.id - 1]}
+            />
+            <div>
+              <PlayerScore
+                currentRoom={
+                  this.props.gamerooms[this.props.match.params.id - 1]
+                }
+              />
+              <Cards
+                currentRoom={
+                  this.props.gamerooms[this.props.match.params.id - 1]
+                }
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    );
   }
 }
 
