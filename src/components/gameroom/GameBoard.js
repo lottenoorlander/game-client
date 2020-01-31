@@ -19,23 +19,21 @@ class GameBoard extends Component {
     ["tile", "flag3", "tile"]
   ];
 
-  positionPlayer1x = this.props.currentRoom.users[0].position[0];
-  positionPlayer1y = this.props.currentRoom.users[0].position[1];
-  positionPlayer2x = this.props.currentRoom.users[1].position[0];
-  positionPlayer2y = this.props.currentRoom.users[1].position[1];
-
-  updatedGameBoard = [
-    ...this.gameboard,
-    (this.gameboard[this.positionPlayer1x - 1][this.positionPlayer1y - 1] =
-      "robot1"),
-    (this.gameboard[this.positionPlayer2x - 1][this.positionPlayer2y - 1] =
-      "robot2")
-  ];
   render() {
+    const positionPlayer1x = this.props.currentRoom.users[0].position[0];
+    const positionPlayer1y = this.props.currentRoom.users[0].position[1];
+    const positionPlayer2x = this.props.currentRoom.users[1].position[0];
+    const positionPlayer2y = this.props.currentRoom.users[1].position[1];
+
+    //THIS IS NOT IT!!!!!!!
+    const updatedGameBoard = this.gameboard.map(row => [...row]);
+    updatedGameBoard[positionPlayer1x - 1][positionPlayer1y - 1] = "robot1";
+    updatedGameBoard[positionPlayer2x - 1][positionPlayer2y - 1] = "robot2";
+
     return (
       <div className="board-wrapper">
-        {this.gameboard.map(row =>
-          row.map(tile => {
+        {updatedGameBoard.map(row => {
+          return row.map(tile => {
             if (tile === "tile") {
               return <img src={floorTile} className="board-tile" />;
             } else if (tile === "pit") {
@@ -51,8 +49,8 @@ class GameBoard extends Component {
             } else if (tile === "robot2") {
               return <img src={r2Tile} className="board-tile" />;
             }
-          })
-        )}
+          });
+        })}
       </div>
     );
   }

@@ -10,8 +10,6 @@ import PlayerScore from "./PlayerScore";
 class GameRoom extends Component {
   state = {};
 
-  componentDidMount() {}
-
   render() {
     const { gamerooms } = this.props;
     const [first] = gamerooms;
@@ -26,6 +24,7 @@ class GameRoom extends Component {
 
     return (
       <div className="player-list">
+        {console.log("I'm rerendering the Gameroom component")}
         <h1>{`Welcome to ${currentGameroom.name}`}</h1>
         {currentGameroom.phase === "WAITING_TO_START" ? (
           <div style={{ display: "flex", flexDirection: "row" }}>
@@ -34,6 +33,9 @@ class GameRoom extends Component {
                 currentRoomId={this.props.match.params.id}
                 currentRoom={currentGameroom}
               />
+              {currentGameroom.phase === "END_OF_GAME"
+                ? "The Game has a Winner!"
+                : ""}
               <ReadyButton />
             </div>
             <GameRules />

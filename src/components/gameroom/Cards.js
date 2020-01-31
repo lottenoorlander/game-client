@@ -39,8 +39,18 @@ import { url } from "../../url";
 class Cards extends Component {
   state = {
     turn: null,
-    selected: null
+    selected: null,
+    number1: 0,
+    number2: 0
   };
+
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      number1: Math.floor(Math.random() * this.cards.length),
+      number2: Math.floor(Math.random() * this.cards.length)
+    });
+  }
 
   onClickHandler = async () => {
     try {
@@ -103,6 +113,14 @@ class Cards extends Component {
   render() {
     return (
       <div>
+        {this.props.currentRoom.phase === "EXECUTING_TURN"
+          ? this.setState({
+              ...this.state,
+              number1: Math.floor(Math.random() * this.cards.length),
+              number2: Math.floor(Math.random() * this.cards.length)
+            })
+          : ""}
+        {console.log(this.state)}
         {this.props.currentRoom.phase === "START_TURN" ? (
           <div>
             <div>
@@ -115,8 +133,8 @@ class Cards extends Component {
                   width: "49%",
                   border: this.state.selected === "left" ? "2px solid blue" : ""
                 }}
-                src={this.cards[this.number1][0]}
-                onClick={() => this.onSelectCard(this.number1, "left")}
+                src={this.cards[this.state.number1][0]}
+                onClick={() => this.onSelectCard(this.state.number1, "left")}
               />
               <img
                 style={{
@@ -124,8 +142,8 @@ class Cards extends Component {
                   border:
                     this.state.selected === "right" ? "2px solid blue" : ""
                 }}
-                src={this.cards[this.number2][0]}
-                onClick={() => this.onSelectCard(this.number2, "right")}
+                src={this.cards[this.state.number2][0]}
+                onClick={() => this.onSelectCard(this.state.number2, "right")}
               />
             </div>
           </div>
