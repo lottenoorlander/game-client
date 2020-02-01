@@ -39,18 +39,8 @@ import { url } from "../../url";
 class Cards extends Component {
   state = {
     turn: null,
-    selected: null,
-    number1: 0,
-    number2: 0
+    selected: null
   };
-
-  componentDidMount() {
-    this.setState({
-      ...this.state,
-      number1: Math.floor(Math.random() * this.cards.length),
-      number2: Math.floor(Math.random() * this.cards.length)
-    });
-  }
 
   onClickHandler = async () => {
     try {
@@ -111,16 +101,13 @@ class Cards extends Component {
   number2 = Math.floor(Math.random() * this.cards.length);
 
   render() {
+    if (this.props.currentRoom.phase === "EXECUTE_TURN") {
+      this.number1 = Math.floor(Math.random() * this.cards.length);
+      this.number2 = Math.floor(Math.random() * this.cards.length);
+    }
+
     return (
       <div>
-        {this.props.currentRoom.phase === "EXECUTING_TURN"
-          ? this.setState({
-              ...this.state,
-              number1: Math.floor(Math.random() * this.cards.length),
-              number2: Math.floor(Math.random() * this.cards.length)
-            })
-          : ""}
-        {console.log("card state", this.state)}
         {this.props.currentRoom.phase === "START_TURN" ? (
           <div>
             <div>
@@ -133,8 +120,8 @@ class Cards extends Component {
                   width: "49%",
                   border: this.state.selected === "left" ? "2px solid blue" : ""
                 }}
-                src={this.cards[this.state.number1][0]}
-                onClick={() => this.onSelectCard(this.state.number1, "left")}
+                src={this.cards[this.number1][0]}
+                onClick={() => this.onSelectCard(this.number1, "left")}
               />
               <img
                 style={{
@@ -142,8 +129,8 @@ class Cards extends Component {
                   border:
                     this.state.selected === "right" ? "2px solid blue" : ""
                 }}
-                src={this.cards[this.state.number2][0]}
-                onClick={() => this.onSelectCard(this.state.number2, "right")}
+                src={this.cards[this.number2][0]}
+                onClick={() => this.onSelectCard(this.number2, "right")}
               />
             </div>
           </div>
