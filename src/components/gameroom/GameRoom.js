@@ -6,6 +6,7 @@ import GameRules from "./GameRules";
 import GameBoard from "./GameBoard";
 import Cards from "./Cards";
 import PlayerScore from "./PlayerScore";
+import Winner from "./Winner";
 
 class GameRoom extends Component {
   state = {};
@@ -55,6 +56,7 @@ class GameRoom extends Component {
             />
             <div>
               <PlayerScore currentRoom={currentGameroom} />
+              <Winner currentRoom={currentGameroom} />
               <Cards currentRoom={currentGameroom} />
             </div>
           </div>

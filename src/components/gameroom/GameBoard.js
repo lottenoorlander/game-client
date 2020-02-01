@@ -25,7 +25,6 @@ class GameBoard extends Component {
     const positionPlayer2x = this.props.currentRoom.users[1].position[0];
     const positionPlayer2y = this.props.currentRoom.users[1].position[1];
 
-    //THIS IS NOT IT!!!!!!!
     const updatedGameBoard = this.gameboard.map(row => [...row]);
     updatedGameBoard[positionPlayer1x - 1][positionPlayer1y - 1] = "robot1";
     updatedGameBoard[positionPlayer2x - 1][positionPlayer2y - 1] = "robot2";

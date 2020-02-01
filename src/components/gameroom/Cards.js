@@ -120,7 +120,7 @@ class Cards extends Component {
               number2: Math.floor(Math.random() * this.cards.length)
             })
           : ""}
-        {console.log(this.state)}
+        {console.log("card state", this.state)}
         {this.props.currentRoom.phase === "START_TURN" ? (
           <div>
             <div>
