@@ -4,7 +4,7 @@ Robo rally is a multiplayer, digitized and simplified version of the old boardga
 
 In order to play you will need to signin and login. After that you can make a gameroom, join it and play once two people have joined. 
 
-Robo Rally was built in a little over a week as a part of the codaisseur academy course 
+Robo Rally was built in a little over a week as a part of the codaisseur academy course. The trello board used can be found [here](https://trello.com/b/Hym6fuj6/game-app)
 
 ## Getting Started
 - clone both git repositories. The github for the backend can be found [here](https://github.com/lottenoorlander/game-server)
@@ -14,6 +14,7 @@ Robo Rally was built in a little over a week as a part of the codaisseur academy
 ## Built with
 ### frontend built with:
 - react-redux
+- thunks
 
 ### backend built with:
 - node.js 
@@ -21,3 +22,10 @@ Robo Rally was built in a little over a week as a part of the codaisseur academy
 - sequelize
 - json-sse
 - postgreSQL
+
+## Possible future features
+- multiple starting boards
+- lasers
+- conveyor belts
+- adding orientation to the movements
+- allow up to 4 players to join a single game
