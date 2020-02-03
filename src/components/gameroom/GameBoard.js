@@ -20,10 +20,18 @@ class GameBoard extends Component {
   ];
 
   render() {
-    const positionPlayer1x = this.props.currentRoom.users[0].position[0];
-    const positionPlayer1y = this.props.currentRoom.users[0].position[1];
-    const positionPlayer2x = this.props.currentRoom.users[1].position[0];
-    const positionPlayer2y = this.props.currentRoom.users[1].position[1];
+    const player1 =
+      this.props.currentRoom.users[0].id > this.props.currentRoom.users[1].id
+        ? this.props.currentRoom.users[0]
+        : this.props.currentRoom.users[1];
+    const player2 =
+      this.props.currentRoom.users[0].id < this.props.currentRoom.users[1].id
+        ? this.props.currentRoom.users[0]
+        : this.props.currentRoom.users[1];
+    const positionPlayer1x = player1.position[0];
+    const positionPlayer1y = player1.position[1];
+    const positionPlayer2x = player2.position[0];
+    const positionPlayer2y = player2.position[1];
 
     const updatedGameBoard = this.gameboard.map(row => [...row]);
     updatedGameBoard[positionPlayer1x - 1][positionPlayer1y - 1] = "robot1";

@@ -33,7 +33,6 @@ class MainLobby extends Component {
   };
 
   joinGameroom = async gameroomId => {
-    console.log(gameroomId);
     try {
       const response = await superagent
         .put(`${this.url}/join`)

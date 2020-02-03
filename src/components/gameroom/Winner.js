@@ -12,7 +12,6 @@ class Winner extends Component {
 
     return (
       <div>
-        {console.log("this is currentRoom winner", users)}
         {currentRoom.phase === "END_OF_GAME" ? (
           <div>{winner.userName} won!</div>
         ) : (

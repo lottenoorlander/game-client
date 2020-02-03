@@ -12,7 +12,6 @@ class SignUpPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
     const action = signUp(this.state.name, this.state.password);
     this.props.dispatch(action);
     this.setState({ ...this.state, signedup: true });

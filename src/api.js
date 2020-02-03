@@ -2,7 +2,6 @@
 const url = "http://localhost:4000";
 
 export default function api(endpoint, { method = "GET", body, jwt } = {}) {
-  console.log("its fetching");
   return fetch(url + endpoint, {
     method: method,
     headers: {

@@ -25,7 +25,6 @@ class GameRoom extends Component {
 
     return (
       <div className="player-list">
-        {console.log("I'm rerendering the Gameroom component")}
         <h1>{`Welcome to ${currentGameroom.name}`}</h1>
         {currentGameroom.phase === "WAITING_TO_START" ? (
           <div style={{ display: "flex", flexDirection: "row" }}>
