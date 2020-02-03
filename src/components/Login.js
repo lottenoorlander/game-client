@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../store/auth/action";
 import { Link } from "react-router-dom";
-import MainLobby from "./MainLobby";
+import MainLobby from "./GameLobby";
 
 class LoginPage extends React.Component {
   state = {
