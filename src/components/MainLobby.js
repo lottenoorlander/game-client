@@ -8,8 +8,8 @@ class MainLobby extends Component {
     text: ""
   };
 
-  // url = "https://shielded-cove-79557.herokuapp.com";
-  url = "http://localhost:4000";
+  url = "https://shielded-cove-79557.herokuapp.com";
+  // url = "http://localhost:4000";
 
   onSubmit = async event => {
     event.preventDefault();
