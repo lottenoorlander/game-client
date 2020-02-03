@@ -7,17 +7,17 @@ In order to play you will need to signin and login. After that you can make a ga
 Robo Rally was built in a little over a week as a part of the codaisseur academy course 
 
 ## Getting Started
--clone both git repositories. The github for the backend can be found [here](https://github.com/lottenoorlander/game-server)
--run npm install
--run npm start
+- clone both git repositories. The github for the backend can be found [here](https://github.com/lottenoorlander/game-server)
+- run npm install
+- run npm start
 
 ## Built with
 ### frontend built with:
--react-redux
+- react-redux
 
 ### backend built with:
--node.js 
--express.js 
--sequelize
--json-sse
--postgreSQL
+- node.js 
+- express.js 
+- sequelize
+- json-sse
+- postgreSQL
